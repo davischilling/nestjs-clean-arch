@@ -6,11 +6,13 @@ describe('UserEntity unit tests', () => {
   let props: UserProps
 
   beforeEach(() => {
+    UserEntity.validate = jest.fn()
     props = UserDataBuilder({})
     sut = new UserEntity(props)
   })
 
   it('Constructor method should create a new UserEntity', () => {
+    expect(UserEntity.validate).toHaveBeenCalledTimes(1)
     expect(sut).toBeInstanceOf(UserEntity)
     expect(sut.props).toEqual(props)
     expect(sut.createdAt).toBeInstanceOf(Date)
@@ -22,12 +24,13 @@ describe('UserEntity unit tests', () => {
     expect(typeof sut.username).toBe('string')
   })
 
-  it('username setter should update the username', () => {
+  it('should update the username', () => {
     const newUsername = 'new-username'
     const updateUsernameSpy = jest.spyOn(sut, 'updateUsername')
 
     sut.updateUsername(newUsername)
 
+    expect(UserEntity.validate).toHaveBeenCalledTimes(2)
     expect(updateUsernameSpy).toHaveBeenCalledTimes(1)
     expect(updateUsernameSpy).toHaveBeenCalledWith(newUsername)
     expect(sut.username).toBe(newUsername)
@@ -45,12 +48,13 @@ describe('UserEntity unit tests', () => {
     expect(typeof sut.password).toBe('string')
   })
 
-  it('password setter should update the password', () => {
+  it('should update the password', () => {
     const newPassword = 'new-password'
     const updatePasswordSpy = jest.spyOn(sut, 'updatePassword')
 
     sut.updatePassword(newPassword)
 
+    expect(UserEntity.validate).toHaveBeenCalledTimes(2)
     expect(updatePasswordSpy).toHaveBeenCalledTimes(1)
     expect(updatePasswordSpy).toHaveBeenCalledWith(newPassword)
     expect(sut.password).toBe(newPassword)
