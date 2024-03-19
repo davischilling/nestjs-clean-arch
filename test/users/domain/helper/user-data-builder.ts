@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { UserProps } from '../../entities/user.entity'
+import { UserProps } from '@/users/domain/entities/user.entity'
 
 type Props = {
   username?: string

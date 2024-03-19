@@ -1,5 +1,5 @@
-import { UserEntity, UserProps } from '../user.entity'
-import { UserDataBuilder } from '../../testing/helper/user-data-builder'
+import { UserEntity, UserProps } from '@/users/domain/entities/user.entity'
+import { UserDataBuilder } from '../helper/user-data-builder'
 
 describe('UserEntity unit tests', () => {
   let sut: UserEntity

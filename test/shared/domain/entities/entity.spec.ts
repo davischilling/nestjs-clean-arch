@@ -1,4 +1,4 @@
-import { Entity } from '../entity'
+import { Entity } from '@/shared/domain/entities/entity'
 import { validate as uuidValidate } from 'uuid'
 
 type StubProps = {
