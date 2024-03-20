@@ -4,6 +4,7 @@ import {
   IsNotEmpty,
   IsOptional,
   IsString,
+  IsStrongPassword,
   MaxLength,
 } from 'class-validator'
 import { UserProps } from '../entities/user.entity'
@@ -24,6 +25,7 @@ export class UserValidationRules {
   @MaxLength(100)
   @IsString()
   @IsNotEmpty()
+  @IsStrongPassword()
   password: string
 
   @IsDate()

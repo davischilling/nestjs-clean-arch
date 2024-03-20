@@ -12,7 +12,7 @@ export function UserDataBuilder(props: Props): UserProps {
   return {
     username: props.username ?? faker.person.fullName(),
     email: props.email ?? faker.internet.email(),
-    password: props.password ?? faker.internet.password(),
+    password: props.password ?? `${faker.internet.password()}.10`,
     createdAt: props.createdAt ?? new Date(),
   }
 }

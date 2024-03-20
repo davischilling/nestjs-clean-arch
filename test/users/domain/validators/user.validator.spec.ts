@@ -124,6 +124,7 @@ describe('UserValidator unit tests', () => {
 
       expect(invalid).toBeFalsy()
       expect(sut.errors['password']).toStrictEqual([
+        'password is not strong enough',
         'password should not be empty',
         'password must be a string',
         'password must be shorter than or equal to 100 characters',
@@ -138,6 +139,7 @@ describe('UserValidator unit tests', () => {
 
       expect(invalid).toBeFalsy()
       expect(sut.errors['password']).toStrictEqual([
+        'password is not strong enough',
         'password should not be empty',
       ])
     })
@@ -150,6 +152,7 @@ describe('UserValidator unit tests', () => {
 
       expect(invalid).toBeFalsy()
       expect(sut.errors['password']).toStrictEqual([
+        'password is not strong enough',
         'password must be shorter than or equal to 100 characters',
       ])
     })
@@ -163,6 +166,7 @@ describe('UserValidator unit tests', () => {
 
       expect(invalid).toBeFalsy()
       expect(sut.errors['password']).toStrictEqual([
+        'password is not strong enough',
         'password must be a string',
         'password must be shorter than or equal to 100 characters',
       ])
