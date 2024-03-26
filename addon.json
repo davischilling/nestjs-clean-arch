@@ -1,0 +1,17 @@
+{
+  "name": "string",
+  "sku": "string",
+  "quantity": "number",
+  "discount?": {
+    "fee": "number",
+    "percentage": "number",
+    "period": "number",
+    "description": "string"
+  },
+  "description": "string",
+  "price": {
+    "annual": "number",
+    "monthly": "number"
+  },
+  "active": "boolean"
+}

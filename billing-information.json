@@ -1,0 +1,25 @@
+{
+  "orgId": "string (index)",
+  "organizationName": "string",
+  "firstName": "string",
+  "lastName": "string",
+  "billingDate": "date (index)",
+  "lastBillingDate": "date",
+  "nextBillingDate": "date",
+  "amountChargedBeforeTax": "number",
+  "totalAmountCharged": "number",
+  "billingCycle": "enum: [Yearly, Monthly]",
+  "paymentMethod?": "string",
+  "last4Digits": "string",
+  "discount": {
+    "fee": "number",
+    "percentage": "number",
+    "period": "number",
+    "description": "string"
+  },
+  "afterPay": {
+    "percentage": "number",
+    "totalNumberOfPayments": "number",
+    "amountDue": "number"
+  }
+}

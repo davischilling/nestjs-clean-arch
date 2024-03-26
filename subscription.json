@@ -1,0 +1,25 @@
+{
+  "orgId": "string (index)",
+  "currentSeats": "string[]",
+  "userEmail": "string",
+  "currentChannels": "string[]",
+  "channelName": "string",
+  "status": "enum: [active, paused, canceled, transaction-failed]",
+  "startDate": "date",
+  "lastBillDate": "date",
+  "lastChargeAmount": "number",
+  "failedBillingAttempts": "number",
+  "freeTrial": {
+    "startDate": "date",
+    "endDate": "date"
+  },
+  "discount": {
+    "flatFee": "number",
+    "percentage": "number",
+    "period": "number",
+    "description": "string"
+  },
+  "plan": "ref:plan",
+  "addons": "ref:addon[]",
+  "chargeAmount": "number"
+}

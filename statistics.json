@@ -1,0 +1,28 @@
+{
+  "subscribersPerPlan": {
+    "totalSubscribers": "number",
+    "[subscriberCountPerPlan]": "number",
+    "[activeSubscriberCountPerPlan]": "number",
+    "[pausedSubscriberCountPerPlan]": "number",
+    "[canceledSubscriberCountPerPlan]": "number",
+    "[monthlySubscriberCountPerPlan]": "number",
+    "[annualSubscriberCountPerPlan]": "number"
+  },
+  "subscribersPerAddon": {
+    "totalSubscribers": "number",
+    "[subscriberCountPerAddon]": "number",
+    "[activeSubscriberCountPerAddon]": "number",
+    "[pausedSubscriberCountPerAddon]": "number",
+    "[canceledSubscriberCountPerAddon]": "number"
+  },
+  "pauseVersusCanceled": {
+    "totalSubscribers": "number",
+    "totalPaused": "number",
+    "totalCanceled": "number"
+  },
+  "totalRevenue": {
+    "totalAmountCharged": "number",
+    "[totalAmountPerPlan]": "number",
+    "[totalAmountPerAddon]": "number"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "string",
+  "sku": "string",
+  "description": "string",
+  "price": {
+    "annual": "number",
+    "monthly": "number"
+  },
+  "discount?": {
+    "fee": "number",
+    "percentage": "number",
+    "period": "number",
+    "description": "string"
+  },
+  "cost?": "number",
+  "trial?": {
+    "active": "boolean",
+    "period": "number"
+  },
+  "active": "boolean",
+  "maxSeatCount": "number",
+  "maxChannelCount": "number"
+}

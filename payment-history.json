@@ -1,0 +1,21 @@
+{
+  "orgId": "string (index)",
+  "transactionDate": "date (index)",
+  "transactionStatus": "enum: [success, failed]",
+  "failureReason": "string",
+  "lineItems": [
+    {
+      "sku": "string",
+      "description": "string (include channel count total / seat count total) / Include free trial period if any",
+      "quantity": "number",
+      "itemCost": "number"
+    }
+  ],
+  "paymentMethod": "string",
+  "amountCharged": "number",
+  "afterPay": {
+    "percentage": "number",
+    "totalNumberOfPayments": "number",
+    "amountDue": "number"
+  }
+}
