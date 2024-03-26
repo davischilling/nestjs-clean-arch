@@ -96,7 +96,7 @@ describe('SearchableInMemoryRepository unit tests', () => {
   })
 
   describe('applySort method', () => {
-    it('should return the items if sort is null', async () => {
+    it('should return all items if sort is null', async () => {
       const items = [
         new StubEntity({ name: 'stub1', price: 10 }),
         new StubEntity({ name: 'stub2', price: 20 }),
@@ -108,7 +108,7 @@ describe('SearchableInMemoryRepository unit tests', () => {
       expect(spySortMethod).not.toHaveBeenCalled()
     })
 
-    it('should return the items if sort is not in sortableFields', async () => {
+    it('should return all items if sort is not in sortableFields', async () => {
       const items = [
         new StubEntity({ name: 'stub1', price: 10 }),
         new StubEntity({ name: 'stub2', price: 20 }),

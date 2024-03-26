@@ -1,18 +1,18 @@
 import { SearchProps, SortDirection } from './searchable-repository.interface'
 
-export class SearchParams {
+export class SearchParams<Filter = string> {
   protected _page: number
   protected _perPage: number
   protected _sort: string | null
   protected _sortDirection: SortDirection | null
-  protected _filter: string | null
+  protected _filter: Filter | null
 
-  constructor(props: SearchProps = {}) {
+  constructor(props: SearchProps<Filter> = {}) {
     this.page = this.pageValdiation(props.page)
     this.perPage = this.perPageValdiation(props.perPage)
-    this.sort = this.sortAndFilterValdiation(props.sort)
+    this.sort = this.sortAndFilterValdiation(props.sort) as string
     this.sortDirection = this.sortDirectionValdiation(props.sortDirection)
-    this.filter = this.sortAndFilterValdiation(props.filter)
+    this.filter = this.sortAndFilterValdiation(props.filter) as Filter
   }
 
   get page(): number {
@@ -36,7 +36,7 @@ export class SearchParams {
   }
 
   private set sort(sort: string | null) {
-    this._sort = this.sortAndFilterValdiation(sort)
+    this._sort = this.sortAndFilterValdiation(sort) as string
   }
 
   get sortDirection(): SortDirection | null {
@@ -47,12 +47,12 @@ export class SearchParams {
     this._sortDirection = this.sortDirectionValdiation(sortDirection)
   }
 
-  get filter(): string | null {
+  get filter(): Filter | null {
     return this._filter
   }
 
-  private set filter(filter: string | null) {
-    this._filter = this.sortAndFilterValdiation(filter)
+  private set filter(filter: Filter | null) {
+    this._filter = this.sortAndFilterValdiation(filter) as Filter
   }
 
   private pageValdiation(page: number): number {
@@ -73,7 +73,9 @@ export class SearchParams {
     return 15
   }
 
-  private sortAndFilterValdiation(value: string | null): string | null {
+  private sortAndFilterValdiation(
+    value: Filter | string | null,
+  ): Filter | string | null {
     return (value == null || value == undefined || value == '') &&
       value !== (false as any)
       ? null

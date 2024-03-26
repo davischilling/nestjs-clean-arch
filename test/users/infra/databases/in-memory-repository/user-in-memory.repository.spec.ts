@@ -67,4 +67,96 @@ describe('UserInMemoryRepository unit tests', () => {
       expect(result).toBe(entity)
     })
   })
+
+  describe('applyFilter method', () => {
+    it('should return all items if filter is null', async () => {
+      const items = [
+        new UserEntity(UserDataBuilder({})),
+        new UserEntity(UserDataBuilder({})),
+      ]
+      const spyFilterMethod = jest.spyOn(items, 'filter')
+      const filteredItems = await sut['applyFilter'](items, null)
+      expect(filteredItems).toHaveLength(2)
+      expect(filteredItems).toStrictEqual(items)
+      expect(spyFilterMethod).not.toHaveBeenCalled()
+    })
+
+    it('should return filtered items', async () => {
+      const items = [
+        new UserEntity(UserDataBuilder({ username: 'test1' })),
+        new UserEntity(UserDataBuilder({ username: 'test2' })),
+      ]
+      const filteredItems = await sut['applyFilter'](items, 'test1')
+      expect(filteredItems).toHaveLength(1)
+      expect(filteredItems[0].props.username).toBe('test1')
+    })
+
+    it('should return filtered items case insensitive', async () => {
+      const items = [
+        new UserEntity(UserDataBuilder({ username: 'username1' })),
+        new UserEntity(UserDataBuilder({ username: 'username2' })),
+      ]
+      const filteredItems = await sut['applyFilter'](items, 'UsErNaMe1')
+      expect(filteredItems).toHaveLength(1)
+      expect(filteredItems[0].props.username).toBe('username1')
+    })
+
+    it('should return no items if filter is not found', async () => {
+      const items = [
+        new UserEntity(UserDataBuilder({})),
+        new UserEntity(UserDataBuilder({})),
+      ]
+      const filteredItems = await sut['applyFilter'](items, 'username3')
+      expect(filteredItems).toHaveLength(0)
+    })
+
+    it('should return all items if filter is empty', async () => {
+      const items = [
+        new UserEntity(UserDataBuilder({})),
+        new UserEntity(UserDataBuilder({})),
+      ]
+      const filteredItems = await sut['applyFilter'](items, '')
+      expect(filteredItems).toHaveLength(2)
+    })
+  })
+
+  describe('applySort method', () => {
+    it('should return all items if sort is null', async () => {
+      const items = [
+        new UserEntity(UserDataBuilder({ username: 'test1' })),
+        new UserEntity(UserDataBuilder({ username: 'test2' })),
+      ]
+      const sortedItems = await sut['applySort'](items, null, null)
+      expect(sortedItems).toStrictEqual(items)
+    })
+
+    it('should return all items if sort is not in sortableFields', async () => {
+      const items = [
+        new UserEntity(UserDataBuilder({ username: 'test1' })),
+        new UserEntity(UserDataBuilder({ username: 'test2' })),
+      ]
+      const sortedItems = await sut['applySort'](items, 'email', 'asc')
+      expect(sortedItems).toStrictEqual(items)
+    })
+
+    it('should sort the items by username in ascending order', async () => {
+      const items = [
+        new UserEntity(UserDataBuilder({ username: 'test2' })),
+        new UserEntity(UserDataBuilder({ username: 'test1' })),
+      ]
+      const sortedItems = await sut['applySort'](items, 'username', 'asc')
+      expect(sortedItems[0].props.username).toBe('test1')
+      expect(sortedItems[1].props.username).toBe('test2')
+    })
+
+    it('should sort the items by username in descending order', async () => {
+      const items = [
+        new UserEntity(UserDataBuilder({ username: 'test1' })),
+        new UserEntity(UserDataBuilder({ username: 'test2' })),
+      ]
+      const sortedItems = await sut['applySort'](items, 'username', 'desc')
+      expect(sortedItems[0].props.username).toBe('test2')
+      expect(sortedItems[1].props.username).toBe('test1')
+    })
+  })
 })
